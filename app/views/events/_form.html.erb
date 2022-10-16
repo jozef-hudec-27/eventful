@@ -1,0 +1,42 @@
+<div class="new-event-form-wrapper">
+    <%= form_with model: event do |form| %>
+        <div class="field">
+            <%= form.label :name %>
+            <%= form.text_field :name, placeholder: 'The coolest event on Earth' %>
+        </div>
+
+        <div class="field">
+            <%= form.label :description %>
+            <%= form.text_area :description, placeholder: 'Attending our event will absolutely change your life!' %>
+        </div>
+
+        <div class="field">
+            <%= form.label :location %>
+            <%= form.text_field :location, placeholder: 'Fancy location' %>
+        </div>
+
+        <div class="field">
+            <%= form.label :date %>
+            <%= form.datetime_field :date %>
+        </div>
+
+        <div class="field">
+            <%= form.label :ticket_price %>
+            <%= form.number_field :ticket_price, min: '0', max: '500' %>
+        </div>
+
+        <%= form.submit %>
+    <% end %>
+</div>
+
+<% if event.errors.any? %>
+    <div class="form-errors">
+        <p><%= pluralize(event.errors.count, "error") %> prohibited this event from being saved:</p>
+
+        <ul>
+            <% event.errors.each do |error| %>
+                <li><%= error.full_message %></li>
+            <% end %>
+        </ul>
+    </div>
+<% end%>

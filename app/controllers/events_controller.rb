@@ -12,6 +12,22 @@ class EventsController < ApplicationController
     end
   end
 
+  def new
+    @event = Event.new
+  end
+
+  def create
+    event_hash = params.dig(:event)
+    @event = Event.new(name: event_hash.dig(:name), location: event_hash.dig(:location), ticket_price: event_hash.dig(:ticket_price),
+                       date: event_hash.dig(:date), description: event_hash.dig(:description), organizer: current_user)
+
+    if @event.save
+      redirect_to event_path(@event)
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
+
   def destroy
     event = Event.find_by(id: params[:id])
 

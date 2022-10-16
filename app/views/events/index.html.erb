@@ -1,5 +1,5 @@
 <% @events.each do |event| %>
     <div class="event">
-        <a href="<%= event_path(event) %>"><%= event.name %></a>
+        <%= link_to event.name, event_path(event) %>
     </div>
 <% end %>
