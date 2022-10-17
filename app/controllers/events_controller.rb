@@ -1,4 +1,6 @@
 class EventsController < ApplicationController
+  before_action :authenticate_user!, only: %i[new create edit update destroy register_toggle]
+
   def index
     @events = Event.all
   end
@@ -80,5 +82,27 @@ class EventsController < ApplicationController
       flash[:alert] = 'You do not have permissions to delete this event.'
       redirect_to root_path
     end
+  end
+
+  def register_toggle
+    event = Event.find_by(id: params.dig(:id))
+
+    if event.nil?
+      flash[:alert] = 'Event not found.'
+      return redirect_to root_path
+    elsif event.organizer == current_user
+      flash[:alert] = "You can't register for your own event."
+      return redirect_to event_path(event)
+    end
+
+    if event.attendees.exists?(current_user.id)
+      event.attendees.delete(current_user)
+      flash[:notice] = 'Unregistered from an event.'
+    else
+      event.attendees << current_user
+      flash[:notice] = 'Successfully registered for an event.'
+    end
+
+    redirect_to event_path(event)
   end
 end
