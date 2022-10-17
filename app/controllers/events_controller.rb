@@ -28,6 +28,42 @@ class EventsController < ApplicationController
     end
   end
 
+  def edit
+    @event = Event.find_by(id: params[:id])
+
+    if @event.nil?
+      flash[:alert] = 'Event not found.'
+      return redirect_to root_path
+    end
+
+    if current_user != @event.organizer
+      flash[:alert] = 'You do not have permissions to edit this event.'
+      redirect_to root_path
+    end
+  end
+
+  def update
+    @event = Event.find_by(id: params[:id])
+    event_hash = params.dig(:event)
+
+    if @event.nil?
+      flash[:alert] = 'Event not found.'
+      return redirect_to root_path
+    end
+
+    if current_user != @event.organizer
+      flash[:alert] = 'You do not have permissions to edit this event.'
+      return redirect_to root_path
+    end
+
+    if @event.update(name: event_hash.dig(:name), location: event_hash.dig(:location), ticket_price: event_hash.dig(:ticket_price),
+                     date: event_hash.dig(:date), description: event_hash.dig(:description))
+      redirect_to event_path(@event)
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   def destroy
     event = Event.find_by(id: params[:id])
 
