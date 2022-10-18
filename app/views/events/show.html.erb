@@ -1,12 +1,28 @@
 <div class="event-detail">
     <h2><%= @event.name %></h2>
     <p><%= @event.description %></p>
+
     <p><%= @event.attendees.count %> attendees</p>
+    <p>Ticket price: <%=@event.ticket_price%>$</p>
+    <p>Organized by
+        <span style="font-weight: 600;">
+        <% if @event.organizer == current_user %>
+            me
+        <% else %>
+            <%=@event.organizer.username%>
+        <% end %>
+        </span>
+    </p>
+
+    <p style="font-weight: bold;">When and where</p>
+    <p>Date and time: <strong><%= @event.date.strftime('%a, %d %b %Y, %l:%M %p') %></strong></p>
+    <p>Location: <strong><%= @event.location %></strong></p>
 </div>
 
 <% if current_user == @event.organizer %>
     <%= link_to 'Delete', event_path(@event), data: { turbo_method: :delete, turbo_confirm: 'Are you sure you want to delete this event?' } %>
     <%= link_to 'Update', edit_event_path(@event) %>
+    <p>Estimated earnings: <%=@event.attendees.count * @event.ticket_price%>$</p>
 <% end %>
 
 <form action="<%= event_register_toggle_path %>" style="display: none;" id="event-register-toggle-form" method="post">
