@@ -3,9 +3,9 @@
     <p><%= @event.description %></p>
 
     <p><%= @event.attendees.count %> attendees</p>
-    <p>Ticket price: <%=@event.ticket_price%>$</p>
+    <p>Ticket price: <span class="event-info"><%=@event.ticket_price == 0 ? 'free' : "#{@event.ticket_price}$"%></span></p>
     <p>Organized by
-        <span style="font-weight: 600;">
+        <span class="event-info">
         <% if @event.organizer == current_user %>
             me
         <% else %>
@@ -14,9 +14,13 @@
         </span>
     </p>
 
-    <p style="font-weight: bold;">When and where</p>
-    <p>Date and time: <strong><%= @event.date.strftime('%a, %d %b %Y, %l:%M %p') %></strong></p>
-    <p>Location: <strong><%= @event.location %></strong></p>
+    <strong>When and where</strong>
+    <p>Date and time: <span class="event-info"><%= @event.date&.strftime('%a, %d %b %Y, %l:%M %p') || 'NOT SPECIFIED YET' %></span></p>
+    <p>Location: <span class="event-info"><%= @event.location %></span></p>
+
+    <% if @event_ended %>
+        <strong>Event has already taken place.</strong>
+    <% end %>
 </div>
 
 <% if current_user == @event.organizer %>
@@ -25,13 +29,15 @@
     <p>Estimated earnings: <%=@event.attendees.count * @event.ticket_price%>$</p>
 <% end %>
 
-<form action="<%= event_register_toggle_path %>" style="display: none;" id="event-register-toggle-form" method="post">
-    <input type="hidden" name="id" value="<%= @event.id %>">
-</form>
+<% unless @event_ended %>
+    <% if user_signed_in? && @event.organizer != current_user %>
+        <form action="<%= event_register_toggle_path %>" style="display: none;" id="event-register-toggle-form" method="post">
+            <input type="hidden" name="id" value="<%= @event.id %>">
+        </form>
 
-<% if user_signed_in? && @event.organizer != current_user %>
-    <input type="submit"
-           form="event-register-toggle-form"
-           value="<% if @event.attendees.exists?(current_user.id) %>Unregister<% else %>Register<% end %>"
-    >
+        <input type="submit"
+            form="event-register-toggle-form"
+            value="<% if @event.attendees.exists?(current_user.id) %>Unregister<% else %>Register<% end %>"
+        >
+    <% end %>
 <% end %>

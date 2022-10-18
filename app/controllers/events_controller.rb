@@ -12,6 +12,8 @@ class EventsController < ApplicationController
       flash[:alert] = 'Event not found.'
       return redirect_to root_path
     end
+
+    @event_ended = @event.date && Time.now > @event.date
   end
 
   def new
@@ -92,6 +94,11 @@ class EventsController < ApplicationController
       return redirect_to root_path
     elsif event.organizer == current_user
       flash[:alert] = "You can't register for your own event."
+      return redirect_to event_path(event)
+    end
+
+    if Time.now > event.date
+      flash[:alert] = 'Event has already taken place.'
       return redirect_to event_path(event)
     end
 
