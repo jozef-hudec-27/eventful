@@ -13,3 +13,21 @@
  *= require_tree .
  *= require_self
  */
+
+ :root {
+    font-family: sans-serif;
+ }
+
+ input, button {
+    appearance: none;
+    border: none;
+    outline: none;
+ }
+ 
+ .flex-item {
+    flex: 1;
+ }
+
+ .flex-container {
+    display: flex;
+ }

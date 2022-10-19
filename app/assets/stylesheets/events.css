@@ -1,3 +1,59 @@
 .event-info {
     font-weight: 600;
 }
+
+.event-title {
+    font-size: 2.5em;
+}
+
+.event-register-btn, .event-ended-details-btn {
+    width: 300px;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    padding: 12px 0;
+    text-decoration: none;
+    text-align: center;
+}
+
+.event-register-btn {
+    background-color: rgb(209,65,12);
+    color: white;
+}
+
+.event-register-btn:hover {
+    background-color: rgb(240,85,55);
+}
+
+.event-register-btn:active {
+    background-color: rgb(209,65,12);
+}
+
+.event-ended-details-btn {
+    background-color: white;
+    border: 2px solid grey;
+    transition-duration: 0.4s;
+    color: black;
+}
+
+.event-ended-details-btn:hover {
+    background-color: rgb(248,247,250);
+}
+
+.event-ended-details-btn:active {
+    background-color: rgb(238,237,242);
+}
+
+#event-register-toggle-form {
+    display: none;
+}
+
+.event-register-wrapper {
+    /* style="display: flex; flex-direction: column; align-items: center; border: 1px solid rgba(0, 0, 0, 0.1); padding: 24px; border-radius: 12px;" */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 24px;
+    padding: 24px;
+}
