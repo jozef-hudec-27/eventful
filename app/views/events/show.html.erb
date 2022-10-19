@@ -1,8 +1,10 @@
 <div class="event-detail">
     <div class="flex-container">
         <div class="flex-item">
-            <h2 class="event-title"><%= @event.name %></h2>
-            <p><%= @event.description %></p>
+            <div class="event-title-wrapper">
+                <p><%= @event.date&.strftime('%b %d') %></p>
+                <h2 class="event-title"><%= @event.name %></h2>
+            </div>
         </div>
 
         
@@ -34,6 +36,31 @@
         </div>
     </div>
 
+    <p>Organized by <a href=""><%= @event.organizer.username %></a></p>
+
+    <div class="event-date-location-container">
+        <h3>When and where</h3>
+
+        <div class="flex-container" style="column-gap: 32px;">
+            <div class="event-date-time-info-wrapper">
+                <div class="event-date-time-icon-wrapper"><%= render 'shared/calendar_icon' %></div>
+
+                <div>
+                    <p class="event-date-time-header">Date and time</p>
+                    <p class="event-date-time"><%= @event.date&.strftime('%a, %d %b %Y, %l:%M %p') || 'NOT SPECIFIED YET' %></p>
+                </div>
+            </div>
+            
+            <div class="event-location-info-wrapper">
+                <div class="event-location-icon-wrapper"><%= render 'shared/map_marker' %></div>
+
+                <div>
+                    <p class="event-location-header">Location</p>
+                    <p class="event-location"><%= @event.location %></p>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <p><%= @event.attendees.count %> attendees</p>
     <p>Organized by
@@ -45,10 +72,6 @@
         <% end %>
         </span>
     </p>
-
-    <strong>When and where</strong>
-    <p>Date and time: <span class="event-info"><%= @event.date&.strftime('%a, %d %b %Y, %l:%M %p') || 'NOT SPECIFIED YET' %></span></p>
-    <p>Location: <span class="event-info"><%= @event.location %></span></p>
 
     <% if @event_ended %>
         <strong>Event has already taken place.</strong>

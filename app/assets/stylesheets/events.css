@@ -3,7 +3,18 @@
 }
 
 .event-title {
-    font-size: 2.5em;
+    font-size: 3em;
+    margin: 0;
+}
+
+.event-title-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.event-title-wrapper > p {
+    margin: 0;
+    font-weight: 600;
 }
 
 .event-register-btn, .event-ended-details-btn {
@@ -17,16 +28,17 @@
 }
 
 .event-register-btn {
-    background-color: rgb(209,65,12);
+    background-color: rgb(209, 65, 12);
     color: white;
 }
 
 .event-register-btn:hover {
-    background-color: rgb(240,85,55);
+    background-color: rgb(240, 85, 55);
+    text-decoration: none;
 }
 
 .event-register-btn:active {
-    background-color: rgb(209,65,12);
+    background-color: rgb(209, 65, 12);
 }
 
 .event-ended-details-btn {
@@ -37,11 +49,12 @@
 }
 
 .event-ended-details-btn:hover {
-    background-color: rgb(248,247,250);
+    background-color: rgb(248, 247, 250);
+    text-decoration: none;
 }
 
 .event-ended-details-btn:active {
-    background-color: rgb(238,237,242);
+    background-color: rgb(238, 237, 242);
 }
 
 #event-register-toggle-form {
@@ -49,11 +62,42 @@
 }
 
 .event-register-wrapper {
-    /* style="display: flex; flex-direction: column; align-items: center; border: 1px solid rgba(0, 0, 0, 0.1); padding: 24px; border-radius: 12px;" */
     display: flex;
     flex-direction: column;
     align-items: center;
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 24px;
     padding: 24px;
+}
+
+.event-date-time-icon-wrapper > svg, .event-location-icon-wrapper > svg {
+    background-color: rgb(248,247,250);
+    padding: 6px;
+    border-radius: 6px;
+    color: blue;
+}
+
+.event-date-location-container {
+    width: 50%;
+}
+
+.event-date-location-container > h3 {
+    font-size: 1.5em;
+    margin-bottom: 16px;
+}
+
+.event-date-time-info-wrapper, .event-location-info-wrapper {
+    display: flex;
+    flex: 1;
+    column-gap: 16px;
+}
+
+.event-date-time-header, .event-location-header {
+    font-weight: 600;
+    margin: 0;
+}
+
+.event-date-time, .event-location {
+    color: rgb(111, 114, 135);
+    margin-top: 4px;
 }

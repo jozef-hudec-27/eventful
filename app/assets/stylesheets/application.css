@@ -31,3 +31,12 @@
  .flex-container {
     display: flex;
  }
+
+ a {
+    text-decoration: none;
+    color: rgb(48,78,199);
+ }  
+
+ a:hover {
+    text-decoration: underline;
+ }
