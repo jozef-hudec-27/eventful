@@ -1,0 +1,27 @@
+<div style="padding: 16px;">
+    <div class="flex-container">
+        <div class="event-title-wrapper flex-item">
+            <p><%= @event.date&.strftime('%b %d') %></p>
+            <h2 class="event-title"><%= @event.name %></h2>
+        </div><br/>
+
+        <div class="flex-item flex-container">
+            <div class="event-register-wrapper">
+                <p class="event-info"><%=@event.ticket_price == 0 ? 'Free' : "#{@event.ticket_price}$"%></p>
+
+                <%= link_to 'Event details', event_path(@event), class: 'event-register-btn' %>
+            </div>
+        </div>
+    </div>
+
+    <p style="color: rgb(111, 114, 135); font-size: 0.9em;">Earnings:
+        <span style="font-weight: 600;"><%= @event.ticket_price * @event.attendees.count %>$</span>
+    </p>
+
+    <h3>Event attendants</h3>
+    <ul class="event-attendees-list">
+        <% @event.attendees.each do |attendee| %>
+            <li><a href=""><%= attendee.username %></a></li>
+        <% end %>
+    </ul>
+</div>

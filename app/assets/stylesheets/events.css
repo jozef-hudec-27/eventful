@@ -114,3 +114,16 @@
 .event-detail {
     padding: 16px;
 }
+
+.event-attendees-list {
+    font-size: 1.5em;
+    list-style: circle;
+}
+
+.event-attendees-list li {
+    margin-bottom: 8px;
+}
+
+.event-attendees-list a {
+    color: rgb(240,85,55);
+}

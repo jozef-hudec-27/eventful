@@ -29,7 +29,7 @@
                     <% elsif !user_signed_in? %>
                         <%= link_to 'Sign in to register', new_user_session_path, class: 'event-register-btn' %>
                     <% elsif @event.organizer == current_user %>
-                        <%= link_to 'See all attendees', '', class: 'event-register-btn' %>
+                        <%= link_to 'See all attendees', event_attendees_path(@event), class: 'event-register-btn' %>
                     <% end %>
                 <% end %>
             </div>

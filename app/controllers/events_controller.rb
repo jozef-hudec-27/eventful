@@ -112,4 +112,16 @@ class EventsController < ApplicationController
 
     redirect_to event_path(event)
   end
+
+  def attendees
+    @event = Event.find_by(id: params[:id])
+
+    if @event.nil?
+      flash[:alert] = 'Event not found.'
+      return redirect_to root_path
+    elsif @event.organizer != current_user
+      flash[:alert] = 'You do not have permissions to access this page.'
+      return redirect_to event_path(@event)
+    end
+  end
 end
