@@ -97,7 +97,7 @@ class EventsController < ApplicationController
       return redirect_to event_path(event)
     end
 
-    if Time.now > event.date
+    if event.date && Time.now > event.date
       flash[:alert] = 'Event has already taken place.'
       return redirect_to event_path(event)
     end

@@ -1,12 +1,17 @@
 <div class="navbar">
-    <a class="main" href="<%= root_path %>">Eventful</a>
+    <a class="main" href="<%= root_path %>">eventful</a>
+
+    <div class="search-events-wrapper">
+        <%= render 'shared/magnify' %>
+        <input type="search" placeholder="Search events">
+    </div>
 
     <% if user_signed_in? %>
         <a href="<%= new_event_path %>">Organize</a>
         <a href="<%= edit_user_registration_path %>">Edit Account</a>
         <a href="<%= destroy_user_session_path %>" style="margin-left: auto;" data-turbo-method="delete">Sign out</a>
     <% else %>
-        <a href="<%= new_user_session_path %>">Login</a>
+        <a href="<%= new_user_session_path %>" style="margin-left: auto;">Login</a>
         <a href="<%= new_user_registration_path %>">Register</a>
     <% end %>
 </div>

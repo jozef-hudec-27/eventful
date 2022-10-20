@@ -18,6 +18,11 @@
     font-family: sans-serif;
  }
 
+ body {
+    margin: 0;
+    padding: 0;
+ }
+
  input, button {
     appearance: none;
     border: none;
@@ -40,3 +45,48 @@
  a:hover {
     text-decoration: underline;
  }
+
+ .navbar {
+    display: flex;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+    font-size: 1.15em;
+    position: sticky;
+    top: 0;
+    align-items: center;
+}
+
+.navbar a {
+    color: rgb(111, 114, 135);
+    padding: 20px 22px;
+    text-decoration: none;
+}
+
+.navbar a:hover {
+    color: black;
+}
+
+.navbar a.main {
+    color: rgb(240,85,55);
+    font-weight: 600;
+}
+
+.navbar input[type='search'] {
+    background-color: rgb(248,247,250);
+    height: 48px;
+    padding: 8px;
+    padding-left: 48px;
+    width: 350px;
+    border-radius: 6px;
+}
+
+.navbar .search-events-wrapper {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.navbar .search-events-wrapper svg {
+    position: absolute;
+    left: 16px;
+    color: grey;
+}
