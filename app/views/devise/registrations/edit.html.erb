@@ -40,4 +40,6 @@
 
 <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
-<%= link_to "Back", :back %>
+<%= link_to "Back", :back %><br/>
+<%= link_to "Events I'm organizing", user_events_path(current_user) %><br/>
+<%= link_to "Events I'm attending", user_attending_events_path %>

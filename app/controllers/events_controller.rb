@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :authenticate_user!, only: %i[new create edit update destroy register_toggle]
+  before_action :authenticate_user!, only: %i[new create edit update destroy register_toggle attending_events]
 
   def index
     @events = Event.all
@@ -136,5 +136,9 @@ class EventsController < ApplicationController
     end
 
     @events = @user.organized_events.sort { |event| event.date }.reverse
+  end
+
+  def attending_events
+    @events = current_user.attended_events
   end
 end
