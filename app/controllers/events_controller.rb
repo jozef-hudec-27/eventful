@@ -123,5 +123,18 @@ class EventsController < ApplicationController
       flash[:alert] = 'You do not have permissions to access this page.'
       return redirect_to event_path(@event)
     end
+
+    @event_ended = @event.date && Time.now > @event.date 
+  end
+
+  def user_events
+    @user = User.find_by(id: params[:id])
+
+    if @user.nil?
+      flash['alert'] = 'User does not exist.'
+      return redirect_to root_path
+    end
+
+    @events = @user.organized_events.sort { |event| event.date }.reverse
   end
 end

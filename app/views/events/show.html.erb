@@ -12,7 +12,11 @@
             <div class="event-register-wrapper">
                 <% if @event_ended %>
                     <p class="event-info">Event ended</p>
-                    <%= link_to 'Details', '', class: 'event-ended-details-btn' %>
+                    
+                    <%= link_to current_user == @event.organizer ? 'Details' : 'More events',
+                                current_user == @event.organizer ? event_attendees_path(@event) : user_events_path(@event.organizer),
+                                class: 'event-ended-details-btn' 
+                    %>
                 <% else %>
                     <p class="event-info"><%=@event.ticket_price == 0 ? 'Free' : "#{@event.ticket_price}$"%></p>
                     
@@ -36,7 +40,7 @@
         </div>
     </div>
 
-    <p>Organized by <a href=""><%= @event.organizer.username %></a></p><br/>
+    <p>Organized by <a href="<%= user_events_path(@event.organizer) %>"><%= @event.organizer.username %></a></p><br/>
 
     <div class="event-date-location-container">
         <h3>When and where</h3>
