@@ -1,3 +1,7 @@
+<% if @search_query %>
+    <h2>Search: '<%=@search_query%>'</h2>
+<% end %>
+
 <% @events.each do |event| %>
     <div class="event">
         <%= link_to event.name, event_path(event) %>

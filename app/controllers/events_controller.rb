@@ -2,7 +2,13 @@ class EventsController < ApplicationController
   before_action :authenticate_user!, only: %i[new create edit update destroy register_toggle attending_events]
 
   def index
-    @events = Event.all
+    @search_query = params[:q]
+    
+    if @search_query
+      @events = Event.where("LOWER(name) LIKE ?", "%" + Event.sanitize_sql_like(@search_query.downcase) + '%')
+    else
+      @events = Event.all
+    end
   end
 
   def show
