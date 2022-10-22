@@ -1,40 +1,38 @@
 <div class="page-wrapper">
     <h2 class="page-heading">Edit profile</h2>
 
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-        <%= render "devise/shared/error_messages", resource: resource %>
+    <div data-turbo="false">
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+            <%= render "devise/shared/error_messages", resource: resource %>
 
-        <div class="field">
-            <%= f.label :email %>
-            <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: 'john.doe@example.com' %>
-        </div>
+            <div class="field">
+                <%= f.label :email %>
+                <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: 'john.doe@example.com' %>
+            </div>
 
-        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-            <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+            <div class="field">
+                <%= f.label :password %> <i>(leave blank if you don't want to change it)</i>
+                <%= f.password_field :password, autocomplete: "new-password", placeholder: '••••••••' %>
+                <% if @minimum_password_length %>
+                <em><%= @minimum_password_length %> characters minimum</em>
+                <% end %>
+            </div>
+
+            <div class="field">
+                <%= f.label :password_confirmation %>
+                <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: '••••••••' %>
+            </div>
+
+            <div class="field">
+                <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i>
+                <%= f.password_field :current_password, autocomplete: "current-password", placeholder: '••••••••••' %>
+            </div>
+
+            <div class="actions">
+                <%= f.submit "Update" %>
+            </div>
         <% end %>
-
-        <div class="field">
-            <%= f.label :password %> <i>(leave blank if you don't want to change it)</i>
-            <%= f.password_field :password, autocomplete: "new-password", placeholder: '••••••••' %>
-            <% if @minimum_password_length %>
-            <em><%= @minimum_password_length %> characters minimum</em>
-            <% end %>
-        </div>
-
-        <div class="field">
-            <%= f.label :password_confirmation %>
-            <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: '••••••••' %>
-        </div>
-
-        <div class="field">
-            <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i>
-            <%= f.password_field :current_password, autocomplete: "current-password", placeholder: '••••••••••' %>
-        </div>
-
-        <div class="actions">
-            <%= f.submit "Update" %>
-        </div>
-    <% end %>
+    </div>
 
     <div class="user-event-links">
         <%= link_to "Events I'm organizing", user_events_path(current_user) %><br/>

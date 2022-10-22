@@ -1,3 +1,15 @@
+<% if event.errors.any? %>
+    <div class="form-errors">
+        <p><%= pluralize(event.errors.count, "error") %> prohibited this event from being saved:</p>
+
+        <ul>
+            <% event.errors.each do |error| %>
+                <li><%= error.full_message %></li>
+            <% end %>
+        </ul>
+    </div>
+<% end%>
+
 <div class="new-event-form-wrapper">
     <%= form_with model: event do |form| %>
         <div class="field">
@@ -28,15 +40,3 @@
         <%= form.submit %>
     <% end %>
 </div>
-
-<% if event.errors.any? %>
-    <div class="form-errors">
-        <p><%= pluralize(event.errors.count, "error") %> prohibited this event from being saved:</p>
-
-        <ul>
-            <% event.errors.each do |error| %>
-                <li><%= error.full_message %></li>
-            <% end %>
-        </ul>
-    </div>
-<% end%>

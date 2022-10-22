@@ -144,7 +144,7 @@ input[type='submit']:active, input[type='submit']:focus {
     box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.3);
 }
 
-input:not([type='submit']):active, input:not([type='submit']):focus, textarea:active, textarea:focus {
+input:not([type='submit']):active, input:not([type='submit']):focus, .field textarea:active, .field textarea:focus {
     outline: 3px solid blue;
 }
 
@@ -161,4 +161,23 @@ input:not([type='submit']):active, input:not([type='submit']):focus, textarea:ac
 
 .field i, .field em {
     font-size: 0.7em;
+}
+
+.field_with_errors input, .field_with_errors textarea {
+    outline: 3px solid red;
+}
+
+.form-errors {
+    color: red;
+    font-size: 0.8em;
+    border-left: 6px solid red;
+    padding-left: 8px;
+    max-width: 300px;
+}
+
+.notice, .alert {
+    margin-left: 16px;
+    font-weight: 600;
+    font-size: 0.9em;
+    color: blue;
 }
