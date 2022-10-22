@@ -43,12 +43,13 @@ class EventsController < ApplicationController
 
     if @event.nil?
       flash[:alert] = 'Event not found.'
-      return redirect_to root_path
-    end
-
-    if current_user != @event.organizer
+      redirect_to root_path
+    elsif current_user != @event.organizer
       flash[:alert] = 'You do not have permissions to edit this event.'
       redirect_to root_path
+    elsif @event.date && Time.now > @event.date
+      flash[:alert] = 'Event has already ended.'
+      redirect_to event_path(@event)
     end
   end
 
@@ -59,11 +60,12 @@ class EventsController < ApplicationController
     if @event.nil?
       flash[:alert] = 'Event not found.'
       return redirect_to root_path
-    end
-
-    if current_user != @event.organizer
+    elsif current_user != @event.organizer
       flash[:alert] = 'You do not have permissions to edit this event.'
       return redirect_to root_path
+    elsif @event.date && Time.now > @event.date
+      flash[:alert] = 'Event has already ended.'
+      return redirect_to event_path(@event)
     end
 
     if @event.update(name: event_hash.dig(:name), location: event_hash.dig(:location), ticket_price: event_hash.dig(:ticket_price),

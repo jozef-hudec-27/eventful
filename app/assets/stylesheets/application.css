@@ -83,6 +83,7 @@
     padding-left: 48px;
     width: 350px;
     border-radius: 6px;
+    outline: none;
 }
 
 .navbar .search-events-wrapper {
@@ -99,4 +100,65 @@
 
 .page-wrapper {
     padding: 16px;
+}
+
+.page-heading {
+    font-size: 3em;
+    margin: 0;
+    margin-bottom: 16px;
+}
+
+input, textarea {
+    outline: 1px solid rgb(111, 114, 135);
+    border-radius: 2px;
+    padding: 4px 8px;
+    width: 300px;
+    height: 30px;
+    border: none;
+    font-family: sans-serif;
+    transition-duration: 0.3s;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    row-gap: 16px;
+}
+
+
+input[type='submit'] {
+    background-color: rgb(240, 85, 55);
+    color: white;
+    cursor: pointer;
+    outline: none;
+    transition-duration: 0.2s;
+    font-weight: 600;
+    height: 45px;
+}
+
+input[type='submit']:hover {
+    background-color: rgb(250, 95, 65);
+}
+
+input[type='submit']:active, input[type='submit']:focus {
+    box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.3);
+}
+
+input:not([type='submit']):active, input:not([type='submit']):focus, textarea:active, textarea:focus {
+    outline: 3px solid blue;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    row-gap: 4px;
+}
+
+.field label {
+    font-size: 0.7em;
+    color: rgb(69, 66, 89);
+}
+
+.field i, .field em {
+    font-size: 0.7em;
 }
