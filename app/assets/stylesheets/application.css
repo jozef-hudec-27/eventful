@@ -91,3 +91,7 @@
     left: 16px;
     color: grey;
 }
+
+.page-wrapper {
+    padding: 16px;
+}

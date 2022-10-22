@@ -1,1 +1,5 @@
-<%= render 'events_list', heading: "#{@user.username}'s events", events: @events %>
+<%= render 'events_list',
+            heading: @user == current_user ? 'My events' : "#{@user.username}'s events",
+            events: @events,
+            empty_list_msg: @user == current_user ? "You aren't organizing any events" : "#{@user.username} isn't organizing any events." 
+%>

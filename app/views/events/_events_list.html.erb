@@ -1,14 +1,18 @@
-<div style="padding: 16px;">
+<div class="page-wrapper">
     <h2 style="font-size: 3em; margin: 0;"><%= heading %></h2>
 
-    <ul class="list">
-        <% events.each do |event| %>
-            <li>
-                <a href="<%= event_path(event) %>" style="<% if event.date && Time.now > event.date %>color: rgb(111, 114, 135);<% end %>"><%= event.name %></a>
-                <% if event.date %>
-                    <span style="font-size: 0.6em; color: rgb(111, 114, 135);"> (<%= event.date&.strftime('%b %d') %>)</span>
-                <% end %>
-            </li>
-        <% end %>
-    </ul>
+    <% if events.any? %>
+        <ul class="list">
+            <% events.each do |event| %>
+                <li>
+                    <a href="<%= event_path(event) %>" style="<% if event.date && Time.now > event.date %>color: rgb(111, 114, 135);<% end %>"><%= event.name %></a>
+                    <% if event.date %>
+                        <span style="font-size: 0.6em; color: rgb(111, 114, 135);"> (<%= event.date&.strftime('%b %d') %>)</span>
+                    <% end %>
+                </li>
+            <% end %>
+        </ul>
+    <% else %>
+        <p class="empty-list-msg"><%= empty_list_msg %></p>
+    <% end %>
 </div>

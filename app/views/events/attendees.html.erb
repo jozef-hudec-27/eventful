@@ -1,4 +1,4 @@
-<div style="padding: 16px;">
+<div class="page-wrapper">
     <div class="flex-container">
         <div class="event-title-wrapper flex-item">
             <p><%= @event.date&.strftime('%b %d') %></p>
@@ -19,9 +19,15 @@
     </p>
 
     <h3><% if @event_ended %>Event was attended by:<% else %>Event attendants<% end %></h3>
-    <ul class="list">
-        <% @event.attendees.each do |attendee| %>
-            <li><a href=""><%= attendee.username %></a></li>
-        <% end %>
-    </ul>
+    <% if @event.attendees.any? %>
+        <ul class="list">
+            <% @event.attendees.each do |attendee| %>
+                <li><a href=""><%= attendee.username %></a></li>
+            <% end %>
+        </ul>
+    <% else %>
+        <p class="empty-list-msg">
+            <% if @event_ended %>Event had no attendants.<% else %>Event has no attendants yet.<% end %>
+        </p>
+    <% end %>
 </div>

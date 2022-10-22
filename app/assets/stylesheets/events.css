@@ -127,3 +127,9 @@
 .list a {
     color: rgb(240,85,55);
 }
+
+.empty-list-msg {
+    font-size: 0.8em;
+    font-style: italic;
+    color: rgb(111, 114, 135);
+}

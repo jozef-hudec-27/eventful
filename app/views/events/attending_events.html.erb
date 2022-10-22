@@ -1,1 +1,5 @@
-<%= render 'events_list', heading: "Events I'm attending", events: @events %>
+<%= render 'events_list',
+            heading: "Events I'm attending",
+            events: @events,
+            empty_list_msg: "You aren't registered to any events."
+%>
