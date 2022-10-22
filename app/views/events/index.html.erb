@@ -2,8 +2,30 @@
     <h2>Search: '<%=@search_query%>'</h2>
 <% end %>
 
-<% @events.each do |event| %>
-    <div class="event">
-        <%= link_to event.name, event_path(event) %>
-    </div>
-<% end %>
+<div class="event-cards-container">
+    <% @events.each do |event| %>
+        <div class="event">
+            <div class="event-card">
+                <img src="https://picsum.photos/400/200" alt="placeholder image">
+
+                <div class="event-card-info">
+                    <%= link_to event.name, event_path(event), class: 'event-card-title' %>
+
+                    <% if event.date %>
+                        <p class="event-card-date"><%= event.date.strftime('%a, %b %-m, %Y %l:%M %p') %></p>
+                    <% else %>
+                        <p class="event-card-date">Unknown date and time</p>
+                    <% end %>
+
+                    <p style="font-size: 0.8em; color: rgb(69,66,89);">Organized by
+                    <span class="bold"><%= event.organizer.username %></span></p>
+
+                    <div class="flex-container" style="align-items: center; font-size: 0.7em;">
+                        <%= render 'shared/account_icon' %>
+                        <%= event.attendees.count %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <% end %>
+</div>

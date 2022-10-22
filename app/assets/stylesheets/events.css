@@ -133,3 +133,42 @@
     font-style: italic;
     color: rgb(111, 114, 135);
 }
+
+.event-cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 32px;
+    padding: 0 64px;
+}
+
+.event-card {
+    min-height: 300px;
+    box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    transition-duration: 0.3s;
+}
+
+.event-card:hover {
+    box-shadow: 0 0 20px 6px rgba(0, 0, 0, 0.15);
+}
+
+.event-card-info {
+    padding: 8px;
+}
+
+.event-card-title {
+    color: rgb(69,66,89);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.event-card-date {
+    font-size: 0.9em;
+    color: rgb(240, 85, 55);
+    font-weight: 600;
+}
+
+.event-card img {
+    width: 100%;
+}

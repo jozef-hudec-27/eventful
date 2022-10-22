@@ -15,7 +15,7 @@
     </div>
 
     <p style="color: rgb(111, 114, 135); font-size: 0.9em;">Earnings:
-        <span style="font-weight: 600;"><%= @event.ticket_price * @event.attendees.count %>$</span>
+        <span class="bold"><%= @event.ticket_price * @event.attendees.count %>$</span>
     </p>
 
     <h3><% if @event_ended %>Event was attended by:<% else %>Event attendants<% end %></h3>

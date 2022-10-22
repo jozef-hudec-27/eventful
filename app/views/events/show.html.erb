@@ -40,7 +40,12 @@
         </div>
     </div>
 
-    <p>Organized by <a href="<%= user_events_path(@event.organizer) %>"><%= @event.organizer.username %></a></p><br/>
+    <p>Organized by <a href="<%= user_events_path(@event.organizer) %>"><%= @event.organizer.username %></a></p>
+
+    <div class="flex-container" style="align-items: center;">
+        <%= render 'shared/account_icon' %>
+        <%= @event.attendees.count %>
+    </div><br/>
 
     <div class="event-date-location-container">
         <h3>When and where</h3>
@@ -56,7 +61,7 @@
             </div>
             
             <div class="event-location-info-wrapper">
-                <div class="event-location-icon-wrapper"><%= render 'shared/map_marker' %></div>
+                <div class="event-location-icon-wrapper"><%= render 'shared/map_marker_icon' %></div>
 
                 <div>
                     <p class="event-location-header">Location</p>
