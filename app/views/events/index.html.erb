@@ -11,7 +11,7 @@
                         <%= link_to event.name, event_path(event), class: 'event-card-title' %>
 
                         <% if event.date %>
-                            <p class="event-card-date"><%= event.date.strftime('%a, %b %-m, %Y %l:%M %p') %></p>
+                            <p class="event-card-date"><%= event.date.strftime('%a, %b %e, %Y %l:%M %p') %></p>
                         <% else %>
                             <p class="event-card-date">Unknown date and time</p>
                         <% end %>

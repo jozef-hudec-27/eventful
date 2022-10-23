@@ -116,7 +116,7 @@ input, textarea {
     height: 30px;
     border: none;
     font-family: sans-serif;
-    transition-duration: 0.3s;
+    transition-duration: 0.2s;
 }
 
 form {

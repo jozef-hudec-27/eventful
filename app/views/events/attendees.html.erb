@@ -21,8 +21,8 @@
     <h3><% if @event_ended %>Event was attended by:<% else %>Event attendants<% end %></h3>
     <% if @event.attendees.any? %>
         <ul class="list">
-            <% @event.attendees.each do |attendee| %>
-                <li><a href=""><%= attendee.username %></a></li>
+            <% @event.attendees.order('username').each do |attendee| %>
+                <li><%= link_to attendee.username, user_events_path(attendee) %></li>
             <% end %>
         </ul>
     <% else %>

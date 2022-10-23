@@ -9,6 +9,8 @@ class EventsController < ApplicationController
     else
       @events = Event.all
     end
+
+    @events = @events.where(date: nil).or(@events.where('date > ?', Time.now)).order('date')
   end
 
   def show
