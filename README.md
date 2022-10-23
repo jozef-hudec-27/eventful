@@ -1,24 +1,5 @@
-# README
+# eventful
+This Web App is part of [The Odin Project's](https://theodinproject.com) Ruby on Rails curriculum.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## What this app is?
+You can create an account which will allow you to organize events other users will be able to join. This app was built to demonstrate more complex Active Record associations between models.
