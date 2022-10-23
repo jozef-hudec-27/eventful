@@ -44,7 +44,7 @@
 
  a {
     text-decoration: none;
-    color: rgb(48,78,199);
+    color: rgb(48, 78, 199);
  }  
 
  a:hover {
@@ -72,12 +72,12 @@
 }
 
 .navbar a.main {
-    color: rgb(240,85,55);
+    color: rgb(240, 85, 55);
     font-weight: 600;
 }
 
 .navbar #search-event-input {
-    background-color: rgb(248,247,250);
+    background-color: rgb(248, 247, 250);
     height: 48px;
     padding: 8px;
     padding-left: 48px;
@@ -180,4 +180,11 @@ input:not([type='submit']):active, input:not([type='submit']):focus, .field text
     font-weight: 600;
     font-size: 0.9em;
     color: blue;
+}
+
+#user_remember_me {
+    appearance: auto;
+    outline: none;
+    width: 20px;
+    height: 20px;
 }

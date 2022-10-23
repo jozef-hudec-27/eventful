@@ -3,16 +3,16 @@
 
     <div data-turbo="false">
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-            <%= render "devise/shared/error_messages", resource: resource %>
+            <%= render 'devise/shared/error_messages', resource: resource %>
 
             <div class="field">
                 <%= f.label :email %>
-                <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "john.doe@example.com" %>
+                <%= f.email_field :email, autofocus: true, autocomplete: 'email', placeholder: 'john.doe@example.com' %>
             </div>
 
             <div class="field">
                 <%= f.label :username %>
-                <%= f.text_field :username, autocomplete: "username", placeholder: "johnDoe" %>
+                <%= f.text_field :username, autocomplete: 'username', placeholder: 'johnDoe' %>
             </div>
 
             <div class="field">
@@ -20,16 +20,16 @@
                 <% if @minimum_password_length %>
                 <em>(<%= @minimum_password_length %> characters minimum)</em>
                 <% end %>
-                <%= f.password_field :password, autocomplete: "new-password", placeholder: '••••••••' %>
+                <%= f.password_field :password, autocomplete: 'new-password', placeholder: '••••••••' %>
             </div>
 
             <div class="field">
                 <%= f.label :password_confirmation %>
-                <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: '••••••••' %>
+                <%= f.password_field :password_confirmation, autocomplete: 'new-password', placeholder: '••••••••' %>
             </div>
 
             <div class="actions">
-                <%= f.submit "Sign up" %>
+                <%= f.submit 'Sign up' %>
             </div>
         <% end %>
     </div>

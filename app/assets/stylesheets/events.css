@@ -71,7 +71,7 @@
 }
 
 .event-date-time-icon-wrapper > svg, .event-location-icon-wrapper > svg {
-    background-color: rgb(248,247,250);
+    background-color: rgb(248, 247, 250);
     padding: 6px;
     border-radius: 6px;
     color: blue;
@@ -185,4 +185,14 @@
     border-radius: 2px;
     cursor: pointer;
     font-weight: 600;
+}
+
+.event-image-wrapper {
+    text-align: center;
+    margin-top: 32px;
+}
+
+.event-image {
+    box-shadow: 0 0 30px 1px rgba(0, 0, 0, 0.5);
+    border-radius: 16px;
 }
