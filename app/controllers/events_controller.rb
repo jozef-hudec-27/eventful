@@ -5,12 +5,10 @@ class EventsController < ApplicationController
     @search_query = params[:q]
     
     if @search_query
-      @events = Event.where("LOWER(name) LIKE ?", "%" + Event.sanitize_sql_like(@search_query.downcase) + '%')
+      @events = Event.upcoming.where("LOWER(name) LIKE ?", "%" + Event.sanitize_sql_like(@search_query.downcase) + '%')
     else
-      @events = Event.all
+      @events = Event.upcoming
     end
-
-    @events = @events.where(date: nil).or(@events.where('date > ?', Time.now)).order('date')
   end
 
   def show
@@ -30,8 +28,9 @@ class EventsController < ApplicationController
 
   def create
     event_hash = params.dig(:event)
-    @event = Event.new(name: event_hash.dig(:name), location: event_hash.dig(:location), ticket_price: event_hash.dig(:ticket_price),
-                       date: event_hash.dig(:date), description: event_hash.dig(:description), organizer: current_user)
+    @event = current_user.organized_events.new(name: event_hash.dig(:name), location: event_hash.dig(:location),
+                                               ticket_price: event_hash.dig(:ticket_price), date: event_hash.dig(:date),
+                                               description: event_hash.dig(:description))
 
     if @event.save
       redirect_to event_path(@event)
@@ -145,7 +144,7 @@ class EventsController < ApplicationController
       return redirect_to root_path
     end
 
-    @events = @user.organized_events.sort { |event| event.date }.reverse
+    @events = @user.organized_events
   end
 
   def attending_events

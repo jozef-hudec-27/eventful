@@ -6,4 +6,7 @@ class Event < ApplicationRecord
 
   has_many :tickets, dependent: :destroy
   has_many :attendees, through: :tickets
+
+  default_scope { order(:date) }
+  scope :upcoming, -> { where(date: nil).or(where('date > ?', Time.now)) }
 end
